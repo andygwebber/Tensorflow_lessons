@@ -12,8 +12,8 @@ y = x  + 1.0 + noise
 [true_slope, true_intercept] = np.polyfit(x, y, 1)
 
 
-num_epochs = 100
-num_batches = 10
+num_epochs = 1000
+num_batches = 1
 batch_size = npoints//num_batches
 g = tf.Graph()
 
@@ -44,7 +44,7 @@ with tf.Session(graph=g) as sess:
              x_batch = x[i_start:i_stop]
              y_batch = y[i_start:i_stop]
              _, l = sess.run([optimizer, loss], feed_dict={X:x_batch, Y:y_batch})
-         print(l)
+         #print(l)
 
 #     print(loss.eval())
 #     print(Y_predicted.eval())
@@ -66,4 +66,4 @@ plt.title('Data to be fitted',fontsize=18)
 plt.show()
 #fig.savefig('batch.jpg')
 
-print(slope - true_slope)
+print("The difference between slope and true slope is ",np.abs(slope - true_slope))

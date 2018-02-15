@@ -4,7 +4,7 @@ import tensorflow as tf
 x = np.array([0.0, 1.0, 2.0])
 y = np.array([1.0, 2.0, 3.0])
 
-num_epochs = 500
+NUM_EPOCHS = 1
 g = tf.Graph()
 
 with g.as_default():
@@ -33,7 +33,7 @@ with g.as_default():
 with tf.Session(graph=g) as sess:
      sess.run(tf.global_variables_initializer())
      
-     for i in range(num_epochs): # run 100 epochs
+     for i in range(NUM_EPOCHS): # run 100 epochs
          """print("gradient of loss from y_pred = ",sess.run([grad_loss_ypred], feed_dict={X:x, Y:y}))
          grad_yp[0], grad_yp[1], grad_yp[2] = sess.run([grad_yp0, grad_yp1, grad_yp2], feed_dict={X:x, Y:y})
          print("gradient of y_pred from slope = ", grad_yp)
